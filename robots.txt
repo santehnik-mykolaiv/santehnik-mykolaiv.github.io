@@ -1,11 +1,272 @@
-User-agent: facebookexternalhit
+# ============================================
+# robots.txt — Повна версія для всіх ботів
+# Включає: пошукові системи, AI/LLM ботів,
+# соціальні мережі, SEO-інструменти
+# ============================================
+
+# --------------------------------------------
+# ОСНОВНІ ПОШУКОВІ СИСТЕМИ
+# --------------------------------------------
+
+# Google (пошук, зображення, новини)
+User-agent: Googlebot
+Allow: /
+User-agent: Googlebot-News
+Allow: /
+User-agent: Googlebot-Image
+Allow: /
+User-agent: Googlebot-Video
+Allow: /
+User-agent: Google-InspectionTool
+Allow: /
+User-agent: GoogleOther
+Allow: /
+User-agent: AdsBot-Google
+Allow: /
+User-agent: Mediapartners-Google
 Allow: /
 
+# Bing / Microsoft
+User-agent: Bingbot
+Allow: /
+User-agent: bingbot
+Allow: /
+User-agent: adidxbot
+Allow: /
+
+# Yahoo
+User-agent: Slurp
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+User-agent: DuckDuckBot-Https
+Allow: /
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+User-agent: YandexMobileBot
+Allow: /
+User-agent: YandexImages
+Allow: /
+User-agent: YandexVideo
+Allow: /
+User-agent: YandexMedia
+Allow: /
+
+# Baidu (Китай)
+User-agent: Baiduspider
+Allow: /
+User-agent: Baiduspider-image
+Allow: /
+User-agent: Baiduspider-video
+Allow: /
+User-agent: Baiduspider-news
+Allow: /
+
+# Інші пошукові системи
+User-agent: Sogou
+Allow: /
+User-agent: Sogou web spider
+Allow: /
+User-agent: PetalBot
+Allow: /
+User-agent: Linespider
+Allow: /
+User-agent: Yeti
+Allow: /
+User-agent: coccocbot
+Allow: /
+User-agent: Qwantify
+Allow: /
+User-agent: SeznamBot
+Allow: /
+User-agent: Naverbot
+Allow: /
+
+
+# --------------------------------------------
+# AI ТА LLM БОТИ (ChatGPT, Claude, Perplexity)
+# --------------------------------------------
+
+# OpenAI (ChatGPT, GPT-4, DALL-E)
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+
+# Google AI (Gemini, Vertex AI)
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Microsoft Copilot / Bing AI
+User-agent: Bingbot
+Allow: /
+
+# Meta (Facebook, Instagram AI)
+User-agent: Meta-ExternalAgent
+Allow: /
+User-agent: Meta-ExternalCrawler
+Allow: /
+User-agent: facebookexternalhit
+Allow: /
 User-agent: FacebookBot
 Allow: /
 
-User-agent: meta-externalagent
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+User-agent: Applebot-Extended
 Allow: /
 
+# Amazon AI (Alexa, Bedrock)
+User-agent: Amazonbot
+Allow: /
+
+# ByteDance / TikTok AI
+User-agent: Bytespider
+Allow: /
+
+# Common Crawl (використовується багатьма AI моделями)
+User-agent: CCBot
+Allow: /
+
+# Інші AI боти
+User-agent: YouBot
+Allow: /
+User-agent: PhindBot
+Allow: /
+User-agent: Diffbot
+Allow: /
+User-agent: Cohere-AI
+Allow: /
+User-agent: CoHere-Search
+Allow: /
+User-agent: MistralBot
+Allow: /
+User-agent: JinaBot
+Allow: /
+User-agent: DataForSeoBot
+Allow: /
+User-agent: NeevaBot
+Allow: /
+User-agent: NeevaAI
+Allow: /
+User-agent: writer
+Allow: /
+User-agent: ai-crawler
+Allow: /
+
+
+# --------------------------------------------
+# СОЦІАЛЬНІ МЕРЕЖІ
+# --------------------------------------------
+
+# Twitter / X
+User-agent: Twitterbot
+Allow: /
+User-agent: TwitterBot
+Allow: /
+
+# LinkedIn
+User-agent: LinkedInBot
+Allow: /
+
+# Pinterest
+User-agent: Pinterestbot
+Allow: /
+
+# Telegram
+User-agent: TelegramBot
+Allow: /
+
+# WhatsApp
+User-agent: WhatsApp
+Allow: /
+
+# Viber
+User-agent: Viber
+Allow: /
+
+
+# --------------------------------------------
+# SEO ТА АНАЛІТИЧНІ БОТИ
+# --------------------------------------------
+
+User-agent: AhrefsBot
+Allow: /
+User-agent: SemrushBot
+Allow: /
+User-agent: SemrushBot-SA
+Allow: /
+User-agent: SemrushBot-SWA
+Allow: /
+User-agent: SemrushBot-BA
+Allow: /
+User-agent: MJ12bot
+Disallow: /  # Ви можете дозволити або заборонити
+
+User-agent: Dotbot
+Allow: /
+User-agent: Rogerbot
+Allow: /
+User-agent: DataForSeoBot
+Allow: /
+User-agent: Seznambot
+Allow: /
+
+
+# --------------------------------------------
+# ЗА ЗАМОВЧУВАННЯМ (для всіх інших ботів)
+# --------------------------------------------
+# ДОЗВОЛЯЄМО всіх ботів, які не перераховані вище
+# Якщо хочете заборонити всіх невідомих ботів -
+# замініть "Allow" на "Disallow"
+
 User-agent: *
-Disallow: 
+Allow: /
+
+
+# --------------------------------------------
+# ЗАБОРОНЕНІ ДИРЕКТОРІЇ (приклад)
+# --------------------------------------------
+# Розкоментуйте, якщо потрібно заборонити доступ до певних папок
+
+# Disallow: /admin/
+# Disallow: /private/
+# Disallow: /tmp/
+# Disallow: /cgi-bin/
+
+
+# --------------------------------------------
+# НАТАШУВАННЯ ЗАТРИМКИ (Crawl-delay)
+# --------------------------------------------
+# Розкоментуйте, якщо потрібно обмежити швидкість обходу
+
+# Crawl-delay: 1
+
+
+# ============================================
+# ПРИМІТКИ:
+# ============================================
+# 1. Файл має лежати в корені сайту: domain.com/robots.txt
+# 2. Більшість AI ботів поважають robots.txt
+# 3. Для розширеного керування AI контентом використовуйте llms.txt
+# 4. Оновлюйте список ботів з появою нових
+# ============================================
