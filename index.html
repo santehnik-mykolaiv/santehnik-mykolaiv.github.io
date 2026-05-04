@@ -490,7 +490,14 @@ transform:translateX(-50%) translateY(0);
 
 <script>
 function focusPhone(){
-  document.getElementById('phone').focus();
+  const phoneInput = document.getElementById('phone');
+  phoneInput.focus();
+  // Ставимо курсор після +380 (на позицію 4)
+  if (phoneInput.value.startsWith('+380')) {
+    phoneInput.setSelectionRange(4, 4);
+  } else {
+    phoneInput.setSelectionRange(phoneInput.value.length, phoneInput.value.length);
+  }
 }
 
 function showToast(text, type="success"){
@@ -526,6 +533,12 @@ function scrollToFormCenter() {
       const phoneInput = document.getElementById('phone');
       if (phoneInput) {
         phoneInput.focus();
+        // Ставимо курсор ПІСЛЯ +380 (на позицію 4)
+        if (phoneInput.value.startsWith('+380')) {
+          phoneInput.setSelectionRange(4, 4);
+        } else {
+          phoneInput.setSelectionRange(phoneInput.value.length, phoneInput.value.length);
+        }
         // Додаємо легкий ефект підсвічування (опційно)
         phoneInput.style.transition = 'box-shadow 0.2s';
         phoneInput.style.boxShadow = '0 0 0 3px rgba(34,158,217,0.4)';
@@ -537,6 +550,17 @@ function scrollToFormCenter() {
   } else {
     // fallback
     document.getElementById('form')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => {
+      const phoneInput = document.getElementById('phone');
+      if (phoneInput) {
+        phoneInput.focus();
+        if (phoneInput.value.startsWith('+380')) {
+          phoneInput.setSelectionRange(4, 4);
+        } else {
+          phoneInput.setSelectionRange(phoneInput.value.length, phoneInput.value.length);
+        }
+      }
+    }, 400);
   }
 }
 
@@ -598,7 +622,6 @@ document.getElementById("callbackForm").addEventListener("submit", function(e){
 
 // Додатково: міграція для Telegram / Viber — працюють коректно.
 // Для Telegram: якщо номер прив'язаний, то https://t.me/+380756177729 відкриє чат з номером.
-// Якщо потрібно інше ім'я користувача, змініть на актуальне, але зараз номер працює.
 // Для Viber: viber://chat?number=+380756177729 – стандартний виклик.
 
 // Покращення для Viber на мобільних пристроях: якщо не спрацьовує, додаємо fallback на viber://contact
@@ -611,6 +634,5 @@ if (viberBtn) {
   });
 }
 </script>
-
 </body>
 </html>
