@@ -27,7 +27,6 @@ padding-bottom:110px;
 h1{
 font-size:22px;
 text-align:center;
-margin-bottom:10px;
 }
 
 .sub{
@@ -64,10 +63,6 @@ color:#fff;
 cursor:pointer;
 }
 
-button:disabled{
-opacity:0.6;
-}
-
 .footer-buttons{
 position:fixed;
 bottom:0;
@@ -84,17 +79,36 @@ padding:14px;
 font-weight:bold;
 color:#fff;
 text-decoration:none;
-font-size:15px;
 }
 
 .call{background:#e60000;}
 .telegram{background:#229ED9;}
 
-.error{
-color:red;
+/* Toast */
+.toast{
+position:fixed;
+left:50%;
+bottom:30px;
+transform:translateX(-50%) translateY(20px);
+background:#111;
+color:#fff;
+padding:14px 18px;
+border-radius:10px;
 font-size:14px;
-margin-top:8px;
+opacity:0;
+transition:0.3s;
+z-index:9999;
+max-width:90%;
+text-align:center;
 }
+
+.toast.show{
+opacity:1;
+transform:translateX(-50%) translateY(0);
+}
+
+.toast.success{background:#16a34a;}
+.toast.error{background:#dc2626;}
 </style>
 </head>
 
@@ -105,26 +119,8 @@ margin-top:8px;
 <h1>Сантехник в Николаеве</h1>
 <div class="sub">Частный мастер • Выезд за 30 минут • Без посредников</div>
 
-<div style="
-background:#25D366;
-color:#fff;
-text-align:center;
-padding:18px;
-border-radius:12px;
-margin:10px 0;
-font-size:22px;
-font-weight:bold;
-box-shadow:0 4px 12px rgba(0,0,0,0.2);
-">
-
-☎️ <a href="tel:+380756177729" style="color:#fff;text-decoration:none;">
-+380 75 617 77 29
-</a>
-
-<div style="font-size:13px;margin-top:6px;opacity:0.9;">
-Вызвать сантехника
-</div>
-
+<div style="background:#25D366;color:#fff;text-align:center;padding:18px;border-radius:12px;font-size:22px;font-weight:bold;">
+☎️ <a href="tel:+380756177729" style="color:#fff;text-decoration:none;">+380 75 617 77 29</a>
 </div>
 
 <div class="block">
@@ -132,118 +128,71 @@ box-shadow:0 4px 12px rgba(0,0,0,0.2);
 • Прорвало трубу<br>
 • Засорилась канализация<br>
 • Не уходит вода<br>
-• Течёт кран или стояк<br>
-• Срочная замена сантехники
-</div>
-
-<div class="block">
-<b>⚡ Почему выбирают меня:</b><br><br>
-• Быстрый выезд по Николаеву<br>
-• Цена до начала работ<br>
-• 10+ лет опыта<br>
-• Работаю сам, без посредников<br>
-• Всё оборудование с собой
-</div>
-
-<div class="block">
-<b>🛠 Услуги:</b><br><br>
-• Аварийный ремонт<br>
-• Чистка канализации<br>
-• Установка сантехники<br>
-• Замена труб
-</div>
-
-<div class="block">
-<b>💰 Цены:</b><br><br>
-Устранение засора — от 800 грн<br>
-Замена смесителя — от 800 грн<br>
-Выезд — бесплатно при работе<br><br>
-<b>Точную цену называю до начала работ</b>
-</div>
-
-<div class="block">
-<b>📍 Работаю по Николаеву:</b><br><br>
-Центральный • Корабельный • Ингульский • Заводской
+• Течёт кран или стояк
 </div>
 
 <!-- ФОРМА -->
-<div class="block" id="form">
+<div class="block">
 <b>💬 Оставьте номер — перезвоню за 2 минуты</b>
 
-<form action="https://santehnik.mk.ua/callback.php" method="POST" id="callbackForm">
-
-<input 
-type="tel" 
-id="phone" 
-name="phone" 
-value="+380"
-pattern="^\+380\d{9}$"
-maxlength="13"
-required
->
-
-<button type="submit" id="submitBtn">
-Перезвонить
-</button>
-
+<form id="callbackForm">
+<input type="tel" id="phone" value="+380" required>
+<button type="submit">Перезвонить</button>
 </form>
 
-<div id="error" class="error"></div>
-
 </div>
 
 </div>
 
-<!-- КНОПКИ -->
 <div class="footer-buttons">
-
-<a class="btn call" href="tel:+380756177729">
-📞 Позвонить
-</a>
-
-<a class="btn telegram" href="#form" onclick="focusPhone()">
-💬 Заявка
-</a>
-
+<a class="btn call" href="tel:+380756177729">📞 Позвонить</a>
+<a class="btn telegram" href="#" onclick="focusPhone()">💬 Заявка</a>
 </div>
+
+<div id="toast" class="toast"></div>
 
 <script>
 function focusPhone(){
-  const input = document.getElementById('phone');
-  input.focus();
-  if(input.value.trim() === ''){
-    input.value = '+380';
-  }
+  document.getElementById('phone').focus();
 }
 
-const form = document.getElementById("callbackForm");
-const error = document.getElementById("error");
-const btn = document.getElementById("submitBtn");
+function showToast(text, type="success"){
+  const toast = document.getElementById("toast");
+  toast.innerText = text;
+  toast.className = "toast show " + type;
 
-form.addEventListener("submit", function(e){
+  setTimeout(()=>{
+    toast.className = "toast";
+  }, 4000);
+}
+
+document.getElementById("callbackForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
   const phone = document.getElementById("phone").value.trim();
   const regex = /^\+380\d{9}$/;
 
-  error.innerText = "";
-
   if(!regex.test(phone)){
-    e.preventDefault();
-    error.innerText = "Введите номер в формате +380XXXXXXXXX";
+    showToast("Введите номер в формате +380XXXXXXXXX", "error");
     return;
   }
 
-  const lastSend = localStorage.getItem("lastSend");
+  fetch("https://santehnik.mk.ua/callback.php", {
+    method: "POST",
+    headers: {"Content-Type": "application/x-www-form-urlencoded"},
+    body: "phone=" + encodeURIComponent(phone)
+  })
+  .then(res => res.json())
+  .then(data => {
+    showToast(data.message, data.status);
 
-  if(lastSend && Date.now() - lastSend < 1800000){
-    e.preventDefault();
-    error.innerText = "Вы уже отправляли заявку. Подождите 30 минут.";
-    return;
-  }
-
-  localStorage.setItem("lastSend", Date.now());
-
-  btn.disabled = true;
-  btn.innerText = "Отправка...";
+    if(data.status === "success"){
+      document.getElementById("phone").value = "+380";
+    }
+  })
+  .catch(()=>{
+    showToast("Ошибка отправки. Попробуйте позже.", "error");
+  });
 });
 </script>
 
