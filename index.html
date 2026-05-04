@@ -266,14 +266,17 @@ transform:translateX(-50%) translateY(0);
 .toast.success{background:#16a34a;}
 .toast.error{background:#dc2626;}
 
-  .floating-buttons {
+
+<!-- Плаваючі кнопки справа -->
+<style>
+.floating-buttons {
   position: fixed;
   right: 15px;
   bottom: 100px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 15px;
 }
 
 .floating-btn {
@@ -307,22 +310,38 @@ transform:translateX(-50%) translateY(0);
   height: 32px;
 }
 
-/* Для мобільних пристроїв трохи менше */
+/* Для мобільних пристроїв - більші кнопки та більша відстань */
 @media (max-width: 480px) {
   .floating-buttons {
     right: 12px;
     bottom: 90px;
-    gap: 10px;
+    gap: 18px;
   }
   .floating-btn {
-    width: 48px;
-    height: 48px;
+    width: 60px;
+    height: 60px;
   }
   .floating-btn svg {
-    width: 28px;
-    height: 28px;
+    width: 34px;
+    height: 34px;
   }
-}</style>
+}
+
+/* Для дуже маленьких екранів */
+@media (max-width: 380px) {
+  .floating-buttons {
+    gap: 20px;
+  }
+  .floating-btn {
+    width: 65px;
+    height: 65px;
+  }
+  .floating-btn svg {
+    width: 36px;
+    height: 36px;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -409,6 +428,47 @@ transform:translateX(-50%) translateY(0);
 
 <div id="toast" class="toast"></div>
 
+  <!-- Футер -->
+<footer style="background:#1a1a2e; color:#eee; padding:30px 20px 20px; margin-top:40px; font-size:14px;">
+  <div style="max-width:600px; margin:0 auto; text-align:center;">
+    
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:25px; margin-bottom:25px;">
+      <div style="min-width:150px;">
+        <h4 style="color:#229ED9; margin-bottom:12px;">🕒 Години роботи</h4>
+        <p style="margin:5px 0;">Пн-Нд: цілодобово</p>
+        <p style="margin:5px 0;">Без вихідних</p>
+        <p style="margin:5px 0;">24/7</p>
+      </div>
+      
+      <div style="min-width:150px;">
+        <h4 style="color:#229ED9; margin-bottom:12px;">📍 Миколаїв</h4>
+        <p style="margin:5px 0;">Центр</p>
+        <p style="margin:5px 0;">Ліски</p>
+        <p style="margin:5px 0;">Намив</p>
+        <p style="margin:5px 0;">ПТЗ</p>
+        <p style="margin:5px 0;">Північний</p>
+        <p style="margin:5px 0;">Соляні</p>
+        <p style="margin:5px 0;">Водопій</p>     
+        <p style="margin:5px 0;">Варварівка</p>
+      </div>
+      
+      <div style="min-width:150px;">
+        <h4 style="color:#229ED9; margin-bottom:12px;">🛠 Основні послуги</h4>
+        <p style="margin:5px 0;">Чистка каналізації</p>
+        <p style="margin:5px 0;">Ремонт водопроводу</p>
+        <p style="margin:5px 0;">Заміна труб</p>
+        <p style="margin:5px 0;">Встановлення сантехніки</p>
+      </div>
+    </div>
+    
+    <div style="border-top:1px solid #333; padding-top:20px; margin-top:10px;">
+      <p style="margin:5px 0;">📞 <a href="tel:+380756177729" style="color:#25D366; text-decoration:none;">+380 75 617 77 29</a></p>
+      <p style="margin:10px 0 5px;">© Сантехнік Миколаїв 2014 - 2036</p>
+      <p style="margin:5px 0; font-size:12px; color:#888;">Всі права захищено</p>
+    </div>
+    
+  </div>
+</footer>
   <div class="floating-buttons">
   <a href="https://t.me/santehnik_mk_ua" class="floating-btn telegram" target="_blank" aria-label="Telegram">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32">
