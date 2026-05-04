@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -7,7 +6,7 @@
 
 <title>Сантехник Николаев — выезд 30–60 минут</title>
 <meta name="description" content="Срочный сантехник в Николаеве. Устранение засоров, течей, установка сантехники. Без посредников.">
-<link rel="icon" type="image/png" href="/favicon.png">  
+
 <style>
 *{box-sizing:border-box;}
 
@@ -44,7 +43,6 @@ margin:10px 0;
 border-radius:10px;
 }
 
-/* форма */
 input{
 width:100%;
 padding:14px;
@@ -63,9 +61,13 @@ border:none;
 border-radius:8px;
 background:#229ED9;
 color:#fff;
+cursor:pointer;
 }
 
-/* кнопки */
+button:disabled{
+opacity:0.6;
+}
+
 .footer-buttons{
 position:fixed;
 bottom:0;
@@ -88,6 +90,11 @@ font-size:15px;
 .call{background:#e60000;}
 .telegram{background:#229ED9;}
 
+.error{
+color:red;
+font-size:14px;
+margin-top:8px;
+}
 </style>
 </head>
 
@@ -110,8 +117,8 @@ font-weight:bold;
 box-shadow:0 4px 12px rgba(0,0,0,0.2);
 ">
 
-☎️ <a href="tel:0756177729" style="color:#fff;text-decoration:none;">
-075 61 777 29
+☎️ <a href="tel:+380756177729" style="color:#fff;text-decoration:none;">
++380 75 617 77 29
 </a>
 
 <div style="font-size:13px;margin-top:6px;opacity:0.9;">
@@ -163,15 +170,25 @@ box-shadow:0 4px 12px rgba(0,0,0,0.2);
 <div class="block" id="form">
 <b>💬 Оставьте номер — перезвоню за 2 минуты</b>
 
-<form action="https://santehnik.mk.ua/callback.php" method="POST">
+<form action="https://santehnik.mk.ua/callback.php" method="POST" id="callbackForm">
 
-<input type="tel" id="phone" name="phone" value="+380" required>
+<input 
+type="tel" 
+id="phone" 
+name="phone" 
+value="+380"
+pattern="^\+380\d{9}$"
+maxlength="13"
+required
+>
 
-<button type="submit">
+<button type="submit" id="submitBtn">
 Перезвонить
 </button>
 
 </form>
+
+<div id="error" class="error"></div>
 
 </div>
 
@@ -198,6 +215,36 @@ function focusPhone(){
     input.value = '+380';
   }
 }
+
+const form = document.getElementById("callbackForm");
+const error = document.getElementById("error");
+const btn = document.getElementById("submitBtn");
+
+form.addEventListener("submit", function(e){
+  const phone = document.getElementById("phone").value.trim();
+  const regex = /^\+380\d{9}$/;
+
+  error.innerText = "";
+
+  if(!regex.test(phone)){
+    e.preventDefault();
+    error.innerText = "Введите номер в формате +380XXXXXXXXX";
+    return;
+  }
+
+  const lastSend = localStorage.getItem("lastSend");
+
+  if(lastSend && Date.now() - lastSend < 1800000){
+    e.preventDefault();
+    error.innerText = "Вы уже отправляли заявку. Подождите 30 минут.";
+    return;
+  }
+
+  localStorage.setItem("lastSend", Date.now());
+
+  btn.disabled = true;
+  btn.innerText = "Отправка...";
+});
 </script>
 
 </body>
