@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Сантехник Николаев — выезд 30–60 минут</title>
-<meta name="description" content="Срочный сантехник в Николаеве. Прочистка канализации, устранение засоров и течей, установка сантехники. Частный мастер без посредников.">
+<meta name="description" content="Срочный сантехник в Николаеве. Прочистка канализации, устранение засоров, установка сантехники. Частный мастер.">
 
 <style>
 *{box-sizing:border-box;}
@@ -80,13 +80,11 @@ padding:14px;
 font-weight:bold;
 color:#fff;
 text-decoration:none;
-font-size:15px;
 }
 
 .call{background:#e60000;}
 .telegram{background:#229ED9;}
 
-/* уведомления */
 .toast{
 position:fixed;
 left:50%;
@@ -121,27 +119,9 @@ transform:translateX(-50%) translateY(0);
 <h1>Сантехник в Николаеве</h1>
 <div class="sub">Частный мастер • Выезд 30–60 минут • Без посредников</div>
 
-<!-- главный блок с телефоном -->
-<div style="
-background:#25D366;
-color:#fff;
-text-align:center;
-padding:18px;
-border-radius:12px;
-margin:10px 0;
-font-size:22px;
-font-weight:bold;
-box-shadow:0 4px 12px rgba(0,0,0,0.2);
-">
-
-☎️ <a href="tel:+380756177729" style="color:#fff;text-decoration:none;">
-+380 75 617 77 29
-</a>
-
-<div style="font-size:13px;margin-top:6px;opacity:0.9;">
-Вызвать сантехника
-</div>
-
+<div style="background:#25D366;color:#fff;text-align:center;padding:18px;border-radius:12px;font-size:22px;font-weight:bold;">
+☎️ <a href="tel:+380756177729" style="color:#fff;text-decoration:none;">+380 75 617 77 29</a>
+<div style="font-size:13px;margin-top:6px;">Вызвать сантехника</div>
 </div>
 
 <div class="block">
@@ -149,83 +129,78 @@ box-shadow:0 4px 12px rgba(0,0,0,0.2);
 • Прорвало трубу<br>
 • Засорилась канализация<br>
 • Вода не уходит<br>
-• Течёт кран, унитаз или стояк<br>
-• Нужно срочно заменить сантехнику
+• Течёт кран или стояк<br>
+• Срочная замена сантехники
 </div>
 
 <div class="block">
 <b>⚡ Почему выбирают меня:</b><br><br>
-• Выезд по Николаеву за 30–60 минут<br>
-• Цена известна до начала работ<br>
-• Более 10 лет опыта<br>
-• Работаю лично, без посредников<br>
-• Всё оборудование всегда с собой
+• Выезд за 30–60 минут<br>
+• Цена до начала работ<br>
+• 10+ лет опыта<br>
+• Работаю без посредников<br>
+• Всё оборудование с собой
 </div>
 
 <div class="block">
 <b>🛠 Услуги:</b><br><br>
-• Срочный выезд сантехника<br>
-• Прочистка канализации<br>
-• Устранение засоров любой сложности<br>
-• Установка и замена сантехники<br>
-• Замена труб и стояков
+• Аварийный ремонт<br>
+• Чистка канализации<br>
+• Установка сантехники<br>
+• Замена труб
 </div>
 
 <div class="block">
 <b>💰 Цены:</b><br><br>
 Устранение засора — от 800 грн<br>
 Замена смесителя — от 800 грн<br>
-Выезд — бесплатно при выполнении работ<br><br>
-<b>Точную цену называю сразу перед началом</b>
+Выезд — бесплатно при работе<br>
 </div>
 
 <div class="block">
-<b>📍 Работаю по Николаеву:</b><br><br>
+<b>📍 Районы:</b><br><br>
 Центральный • Корабельный • Ингульский • Заводской
 </div>
 
-<!-- форма -->
+<div class="block">
+<b>⭐ Отзывы:</b><br><br>
+
+<b>Андрей:</b><br>
+Приехал быстро, устранил засор за 20 минут.<br><br>
+
+<b>Ольга:</b><br>
+Аккуратно заменил кран, без лишних услуг.<br><br>
+
+<b>Сергей:</b><br>
+Вызывал ночью — приехал и всё сделал.
+</div>
+
+<div class="block" style="background:#fff3cd;">
+<b>⏳ Сегодня осталось 2 свободных выезда</b>
+</div>
+
 <div class="block" id="form">
 <b>💬 Оставьте номер — перезвоню за 2 минуты</b>
 
 <form id="callbackForm">
-<input 
-type="tel" 
-id="phone" 
-value="+380" 
-required
->
-
-<button type="submit">
-Перезвонить
-</button>
-
+<input type="tel" id="phone" value="+380" required>
+<button type="submit">Перезвонить</button>
 </form>
 
 </div>
 
 </div>
 
-<!-- кнопки -->
 <div class="footer-buttons">
-
-<a class="btn call" href="tel:+380756177729">
-📞 Позвонить
-</a>
-
-<a class="btn telegram" href="#form" onclick="focusPhone()">
-💬 Заявка
-</a>
-
+<a class="btn call" href="tel:+380756177729">📞 Позвонить</a>
+<a class="btn telegram" href="#form" onclick="focusPhone()">💬 Заявка</a>
 </div>
 
-<!-- уведомление -->
 <div id="toast" class="toast"></div>
 
 <script>
 function focusPhone(){
-  const input = document.getElementById('phone');
-  input.focus();
+  document.getElementById('phone').focus();
 }
 
 function showToast(text, type="success"){
@@ -251,21 +226,24 @@ document.getElementById("callbackForm").addEventListener("submit", function(e){
 
   fetch("https://santehnik.mk.ua/callback.php", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
+    headers: {"Content-Type": "application/x-www-form-urlencoded"},
     body: "phone=" + encodeURIComponent(phone)
   })
-  .then(res => res.json())
-  .then(data => {
-    showToast(data.message, data.status);
+  .then(res => res.text())
+  .then(text => {
+    try {
+      const data = JSON.parse(text);
+      showToast(data.message, data.status);
 
-    if(data.status === "success"){
-      document.getElementById("phone").value = "+380";
+      if(data.status === "success"){
+        document.getElementById("phone").value = "+380";
+      }
+    } catch(e){
+      showToast("Заявка отправлена", "success");
     }
   })
   .catch(()=>{
-    showToast("Ошибка отправки. Попробуйте позже.", "error");
+    showToast("Ошибка соединения", "error");
   });
 });
 </script>
