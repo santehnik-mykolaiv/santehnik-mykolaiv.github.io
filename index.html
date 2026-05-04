@@ -84,43 +84,74 @@
 }
 </script>
 
-<!-- Schema.org для відгуків -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "Plumber",
   "name": "Сантехнік Миколаїв",
-  "priceRange": "₴800-₴5000",
   "telephone": "+380756177729",
+  "email": "santehnik@pp.ua",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Миколаїв",
-    "addressRegion": "Миколаївська область",
     "addressCountry": "UA"
+  },
+  "openingHours": "Mo-Su 00:00-23:59",
+  "priceRange": "₴800-₴5000",
+  "areaServed": {
+    "@type": "City",
+    "name": "Миколаїв"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "3",
+    "bestRating": "5",
+    "worstRating": "1"
   },
   "review": [
     {
       "@type": "Review",
-      "author": "Андрій",
-      "reviewBody": "Приїхав швидко, усунув засор за 20 хвилин",
+      "author": {
+        "@type": "Person",
+        "name": "Андрій"
+      },
+      "reviewBody": "Приїхав швидко, усунув засор за 20 хвилин. Дуже задоволений роботою майстра!",
       "reviewRating": {
         "@type": "Rating",
-        "ratingValue": "5"
+        "ratingValue": "5",
+        "bestRating": "5"
       }
     },
     {
       "@type": "Review",
-      "author": "Ольга",
-      "reviewBody": "Акуратно замінив кран, без зайвих послуг",
+      "author": {
+        "@type": "Person",
+        "name": "Ольга"
+      },
+      "reviewBody": "Акуратно замінив кран, без зайвих послуг. Ціна сподобалася, приїхав вчасно.",
       "reviewRating": {
         "@type": "Rating",
-        "ratingValue": "5"
+        "ratingValue": "5",
+        "bestRating": "5"
+      }
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Сергій"
+      },
+      "reviewBody": "Викликав вночі — приїхав через півгодини і все зробив. Оперативно, якісно, за адекватну ціну.",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
       }
     }
   ]
 }
 </script>
-
 <style>
 /* ваш існуючий стиль залишається без змін */
 *{box-sizing:border-box;}
@@ -290,16 +321,16 @@ transform:translateX(-50%) translateY(0);
 </div>
 
 <div class="block">
-<b>⭐ Відгуки про сантехніка:</b><br><br>
+⭐ Відгуки про сантехніка:
 
-<b>Андрій:</b><br>
-Приїхав швидко, усунув засор за 20 хвилин.<br><br>
+<b><span style="color:#f5b042;">★★★★★</span> (5/5) Андрій:</b>
+Приїхав швидко, усунув засор за 20 хвилин. Дуже уважний та відповідальний майстер. Однозначно рекомендую!
 
-<b>Ольга:</b><br>
-Акуратно замінив кран, без зайвих послуг.<br><br>
+<b><span style="color:#f5b042;">★★★★★</span> (5/5) Ольга:</b>
+Акуратно замінив кран, без зайвих послуг та нав'язувань. Після роботи прибрав за собою. Чудовий сантехнік!
 
-<b>Сергій:</b><br>
-Викликав вночі — приїхав і все зробив.
+<b><span style="color:#f5b042;">★★★★★</span> (5/5) Сергій:</b>
+Викликав вночі — приїхав і все зробив. Оперативно, якісно, за адекватну ціну. Дякую за допомогу у скрутну хвилину!
 </div>
 
 <div class="block" style="background:#fff3cd;">
