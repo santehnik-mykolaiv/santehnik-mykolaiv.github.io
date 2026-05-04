@@ -1,1 +1,11 @@
+User-agent: facebookexternalhit
+Allow: /
 
+User-agent: FacebookBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: *
+Disallow: 
